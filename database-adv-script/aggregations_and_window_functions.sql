@@ -1,6 +1,11 @@
 -- Task 2: Aggregations and Window Functions
+-- Author: [Your Name]
+-- Date: [Date]
+-- Project: ALX Airbnb Database - Advanced SQL
 
+------------------------------------------------------------
 -- 1. Total number of bookings made by each user
+------------------------------------------------------------
 SELECT
     u.id AS user_id,
     u.first_name,
@@ -15,7 +20,9 @@ GROUP BY
 ORDER BY
     total_bookings DESC;
 
+------------------------------------------------------------
 -- 2. Rank properties based on total number of bookings received
+------------------------------------------------------------
 SELECT
     p.id AS property_id,
     p.name AS property_name,
