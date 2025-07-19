@@ -19,9 +19,7 @@ SELECT
 FROM
     Booking b
 INNER JOIN
-    User u
-ON
-    b.user_id = u.id;
+    User u ON b.user_id = u.id;
 
 ------------------------------------------------------------
 -- LEFT JOIN
@@ -37,9 +35,7 @@ SELECT
 FROM
     Property p
 LEFT JOIN
-    Review r
-ON
-    p.id = r.property_id;
+    Review r ON p.id = r.property_id;
 
 ------------------------------------------------------------
 -- FULL OUTER JOIN
@@ -58,6 +54,4 @@ SELECT
 FROM
     User u
 FULL OUTER JOIN
-    Booking b
-ON
-    u.id = b.user_id;
+    Booking b ON u.id = b.user_id;
