@@ -2,9 +2,7 @@
 -- Author: [Your Name]
 -- Date: [Date]
 
-------------------------------------------------------------
--- 1. Total number of bookings made by each user
-------------------------------------------------------------
+-- Total bookings by each user
 SELECT
     u.id AS user_id,
     u.first_name,
@@ -19,14 +17,12 @@ GROUP BY
 ORDER BY
     total_bookings DESC;
 
-------------------------------------------------------------
--- 2. Rank properties based on total number of bookings received
-------------------------------------------------------------
+-- Rank properties based on total bookings received
 SELECT
     property_id,
     property_name,
     total_bookings,
-    RANK() OVER (ORDER BY total_bookings DESC) AS booking_rank
+    ROW_NUMBER() OVER (ORDER BY total_bookings DESC) AS booking_rank
 FROM (
     SELECT
         p.id AS property_id,
@@ -38,6 +34,4 @@ FROM (
         Booking b ON p.id = b.property_id
     GROUP BY
         p.id, p.name
-) AS property_bookings
-ORDER BY
-    booking_rank;
+) AS property_bookings;
