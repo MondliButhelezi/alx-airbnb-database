@@ -1,4 +1,5 @@
 -- Task 4: Initial Query (Unoptimized)
+EXPLAIN ANALYZE
 SELECT
     b.id AS booking_id,
     u.id AS user_id,
@@ -19,12 +20,14 @@ LEFT JOIN
     Payment pay ON b.id = pay.booking_id
 WHERE
     b.start_date >= '2023-01-01'
+    AND b.end_date <= '2023-12-31'  -- Added AND condition here
 ORDER BY
     b.start_date DESC;
 
 -- Optimized Query
 -- Assume indexes on Booking(start_date), Booking(user_id), Booking(property_id), Payment(booking_id)
 
+EXPLAIN ANALYZE
 SELECT
     b.id AS booking_id,
     u.id AS user_id,
@@ -45,5 +48,6 @@ LEFT JOIN
     Payment pay ON pay.booking_id = b.id
 WHERE
     b.start_date >= '2023-01-01'
+    AND b.end_date <= '2023-12-31'  -- Added AND condition here
 ORDER BY
     b.start_date DESC;
