@@ -35,7 +35,9 @@ SELECT
 FROM
     Property p
 LEFT JOIN
-    Review r ON p.id = r.property_id;
+    Review r ON p.id = r.property_id
+ORDER BY
+    p.id;
 
 ------------------------------------------------------------
 -- FULL OUTER JOIN
